@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js" crossorigin></script>
+</head>
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+
+    class App extends React.Component { 
+        constructor(props){
+            super(props);
+            this.state = {
+                balance : 0,
+                deposit: "",
+                withdrawal: "",
+            }
+        }
+
+    updateWithdrawal = (event) => {
+        this.setState({
+            withdrawal: event.target.value
+        })
+    }
+
+    updateDeposit = (event) => {
+        this.setState({
+            deposit: event.target.value
+        })
+    }
+
+    increment = () => {
+        this.setState(state => ({
+            balance: state.balance + +state.deposit,
+            deposit: ""
+        }));
+    }
+
+    decriment = () => {
+        this.setState(state => ({ 
+            balance: state.balance - +state.withdrawal,
+            withdrawal: ""
+        }));
+    }
+
+    store = (e) => {
+        localStorage.setItem("currBalance", this.state.balance);
+    }
+
+    clear = () => {
+        this.setState({
+            balance: 0
+        })
+    }
+
+    componentDidMount() {
+        let currBalance = localStorage.getItem("currBalance");
+        this.setState({
+            balance: +currBalance
+        })
+        window.addEventListener("beforeunload", this.store);  //event listener starts listening when component is loaded
+    }
+        
+        render() {
+            return (
+            <div>
+                <h1>Your Account balance: {this.state.balance} $</h1>
+                <h3>Withdrawal</h3>
+                <input type="number" placeholder="0" onChange={this.updateWithdrawal} value={this.state.withdrawal}/> <br></br>
+                <button onClick={this.decriment}>Submit</button>
+                
+                <h3>Deposit</h3>
+                <input type="number" placeholder="0" onChange={this.updateDeposit} value={this.state.deposit}/> <br></br>
+                <button onClick={this.increment}>Submit</button> <br></br>
+                <button onClick={this.clear}>Clear</button>
+            </div>
+            )
+        }
+    }
+
+    ReactDOM.render (                        
+        <App/>,
+        document.getElementById("root")
+    )
+    </script>
+</body>
+</html> 

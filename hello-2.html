@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js" crossorigin></script>
+</head>
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+
+        function Name (props) {                    //props are immutable
+            let convert = props.name.toUpperCase()
+            return <h1>Hi, {convert}!</h1>
+        }
+
+        ReactDOM.render(                        //function call, what and then where to render it
+            <Name name="Marry" />,
+            document.getElementById("root")
+        )
+    </script>
+</body>
+</html>

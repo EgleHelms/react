@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js" crossorigin></script>
+</head>
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+
+        function getName(userObj) {
+            return userObj.firstName + " " + userObj.lastName;
+        }
+
+        const user = {
+            firstName: "Maxi",
+            lastName: "Helms"
+        }
+
+        const element = (
+            <div>
+                <h1>Hello, {getName(user)}!</h1>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias voluptatibus placeat perspiciatis odio exercitationem impedit, repudiandae obcaecati, nemo, fugiat animi consectetur blanditiis. Adipisci facilis officia quam id molestias nesciunt? Delectus.</p>
+            </div>
+            );
+
+            //task 2 change content of the paragrapgh
+            //react elements are immutable, they can only be replaced
+            //let pElem = document.querySelector("p");
+            //pElem.textContent = "I am learning React.";
+        
+        ReactDOM.render(                       
+            element,
+            document.getElementById("root")
+        )
+    </script>
+</body>
+</html>

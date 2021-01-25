@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js" crossorigin></script>
+</head>
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+
+        //adding events
+
+class Hello extends React.Component {
+
+    render () {
+        return (
+            <div>
+                <h1>Hi, {this.props.name}!</h1>
+                <button onClick = {this.click} >Say Hi</button>
+            </div>  
+            )
+    }
+        
+    click = () => {
+        alert('Hi, ' + this.props.name);
+    }
+}
+
+class App extends React.component {
+    render() {
+        return (
+            <div>
+                <Hello name="Chris" />
+                <Hello name="Igor" />
+                <Hello name="Marika" />
+            </div> 
+        )
+    }
+}
+
+ReactDOM.render(
+    <App />,
+    document.getElementById("root")
+)
+
+        //traditional notation
+
+            // constructor(props) {
+            //     super(props);
+            //     this.handleClick = handleClick.bind(this);
+            // }
+
+            // handleClick = function() {
+            //     alert('Hi, ' + this.props.name);
+            // }
+    </script>
+</body>
+</html>
+
+
+

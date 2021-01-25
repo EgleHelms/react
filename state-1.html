@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js" crossorigin></script>
+</head>
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+
+class Counter extends React.Component {
+    constructor(props) {    //need because we want to track state
+        super(props)
+        this.state = {
+            count: 0        //state of the object
+        }
+    }
+
+    increment = () => {
+        this.setState(state => ({
+            count: state.count + 1
+        }));
+    }
+
+    decriment = () => {
+        this.setState(state => ({   //takes old state and updates it in terms of it's current state
+            count: state.count - 1
+        }));
+    }
+
+    render() {
+        return (
+        <div>
+            <h1>{this.state.count}</h1>
+            <button onClick={this.decriment}>-</button>
+            <button onClick={this.increment}>+</button>
+        </div>
+        )
+    }
+}
+
+class App extends React.Component {
+    render() {
+        return (
+            <div>
+                <Counter />
+                <Counter />
+                <Counter />
+            </div> 
+        )
+    }
+}
+
+
+ReactDOM.render(
+    <App />,
+    document.getElementById("root")
+)

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js" crossorigin></script>
+</head>
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+
+
+    function showDate (){
+        let today = new Date();
+        let date = today.toLocaleDateString();
+        let time = today.toLocaleTimeString();
+
+        //React will be updating only the part that needs updating
+
+        let element = (
+            <div>
+                <h1>Hello World!</h1>
+                <h2>It is currently {date + " " + time}.</h2>
+            </div>
+        );
+
+        ReactDOM.render(                        
+            element,
+            document.getElementById("root")
+        )
+    }
+    
+    setInterval(showDate, 1000)
+
+    </script>
+</body>
+</html>

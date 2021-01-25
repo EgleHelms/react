@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js" crossorigin></script>
+</head>
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+
+    // function Comp(props) {                        //component
+    //     return <h1>Hi, {props.name}!</h1>;
+    // }
+
+    // function App() {                            // nested components - contains 3 Comp
+    //     return (
+    //         <div>
+    //             <Comp name="Chris" />
+    //             <Comp name="Igor" />
+    //             <Comp name="Marika" />
+    //         </div>
+    //     );
+    // }
+
+    class Comp extends React.Component {     //expression as a class - extension of React.component
+        render() {
+            return <h1>Hi, {this.props.name}!</h1>
+        }
+    }
+
+    class App extends React.Component {     //component expression as a class 
+        render() {
+            return (
+            <div>
+                <Comp name="Chris" />
+                <Comp name="Igor" />
+                <Comp name="Marika" />
+            </div>
+            )
+        }
+    }
+
+    ReactDOM.render (                        
+        <App/>,
+        document.getElementById("root")
+    )
+    </script>
+</body>
+</html> 
